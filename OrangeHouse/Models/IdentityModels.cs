@@ -59,7 +59,6 @@ namespace OrangeHouse.Models
             return new ApplicationDbContext();
         }
 
-        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Image> Images { get; set; }
 

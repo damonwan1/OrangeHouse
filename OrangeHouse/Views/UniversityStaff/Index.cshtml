@@ -1,0 +1,55 @@
+﻿@model IEnumerable<OrangeHouse.Models.Advertisement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Images)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (item.Images.Count == 0)
+                {
+                <label>No Image</label>
+            }
+            else
+            {
+                foreach (OrangeHouse.Models.Image i in item.Images)
+                {
+                    if (i.ImageData != null)
+                    {
+                        <img src="data:@i.ImageMimeType;base64, @Convert.ToBase64String(i.ImageData)" style="width:100px;height:130px;"/>
+                        break;
+                    }
+                }
+            }        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Pass", "Pass", new { id=item.ID }) |
+            @Html.ActionLink("Fail", "Fail", new { id = item.ID })|
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+        </td>
+    </tr>
+}
+
+</table>

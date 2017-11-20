@@ -201,9 +201,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LandlordController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\UniversityStaffController.cs" />
     <Compile Include="DAO\AdvertisementDAO.cs" />
+    <Compile Include="DAO\LandlordDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,10 +275,24 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\UniversityStaff\Create.cshtml" />
+    <Content Include="Views\UniversityStaff\Delete.cshtml" />
+    <Content Include="Views\UniversityStaff\Details.cshtml" />
+    <Content Include="Views\UniversityStaff\Edit.cshtml" />
+    <Content Include="Views\UniversityStaff\Index.cshtml" />
+    <Content Include="Views\Landlord\Create.cshtml" />
+    <Content Include="Views\Landlord\Delete.cshtml" />
+    <Content Include="Views\Landlord\Details.cshtml" />
+    <Content Include="Views\Landlord\Edit.cshtml" />
+    <Content Include="Views\Landlord\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

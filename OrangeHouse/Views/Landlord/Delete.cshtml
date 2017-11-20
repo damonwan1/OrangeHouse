@@ -1,0 +1,49 @@
+﻿@model OrangeHouse.Models.Advertisement
+
+@{
+    Layout = null;
+}
+
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Landlord</h4>
+        <hr />
+        <dl class="dl-horizontal">
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Images)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Images)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Pass)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Pass)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+

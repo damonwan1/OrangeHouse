@@ -1,0 +1,146 @@
+﻿@model OrangeHouse.Models.Advertisement
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<script>
+    
+    window.onload = function () {
+        $("#myCarousel").carousel('cycle');
+
+    } 
+</script>
+<div>
+    <h4>Landlord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Images)
+        </dt>
+
+        <dd>
+            <div id="myCarousel" class="carousel slide" style="width:35%;height:35%;">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+
+                    @if (Model.Images.Count == 0)
+                    {
+                        <label>No Image Found</label>
+                    }
+                    else
+                    {
+                        int s = 0;
+                        foreach (OrangeHouse.Models.Image i in Model.Images)
+                        {
+
+                            if (i.ImageData != null)
+                            {
+                                if (s == 0)
+                                {
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                }
+                                else
+                                {
+                                    <li data-target="#myCarousel" data-slide-to="@s"></li>
+                                }
+                                s++;
+
+                            }
+                        }
+                    }
+
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+
+                    @if (Model.Images.Count == 0)
+                    {
+                        <label>No Image Found</label>
+                    }
+                    else
+                    {
+                        int s = 0;
+                        foreach (OrangeHouse.Models.Image i in Model.Images)
+                        {
+
+                            if (i.ImageData != null)
+                            {
+                                if (s == 0)
+                                {
+                                    <div class="item active">
+                                        <img src="data:@i.ImageMimeType;base64, @Convert.ToBase64String(i.ImageData)" />
+                                        <div class="carousel-caption">@i.Description</div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <img src="data:@i.ImageMimeType;base64, @Convert.ToBase64String(i.ImageData)" />
+                                        <div class="carousel-caption">@i.Description</div>
+                                    </div>
+                                }
+                                s++;
+                            }
+                        }
+                    }
+
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="carousel-control left" href="#myCarousel"
+                   data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel"
+                   data-slide="next">&rsaquo;</a>
+            </div>
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass)
+        </dt>
+
+        <dd>
+            @{
+
+                if (Model.Pass.ToString().Equals("0"))
+                {
+                    @Html.Label("Wait")
+                }
+                else if (Model.Pass.ToString().Equals("1"))
+                {
+                    @Html.Label("Pass")
+                }
+                else if (Model.Pass.ToString().Equals("2"))
+                {
+                    @Html.Label("Fail")
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+   

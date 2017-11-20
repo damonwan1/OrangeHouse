@@ -1,0 +1,91 @@
+﻿@model ICollection<System.Web.HttpPostedFileBase>
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    var click = 0;
+    function addAttachment(event) {
+        $('#fileDiv').after('<div><div style="margin-left:30px;"><input type="file" name="file'+click+'" /></div ><br><label>Image Description</label><input type="text" name="imageDescription' + click + '" value="" /></div></div>');
+        click++; 
+    };
+    function check() {
+        var textInput = document.getElementById("textInput");
+        var remainChar = document.getElementById("remainChar");
+        if (textInput.value.length > 200) {
+            textInput.value = textInput.value.substring(0, 200);
+            remainChar.innerHTML = "200";
+        } else {
+            remainChar.innerHTML = textInput.value.length + "";
+        }
+    }
+</script>
+
+
+<form enctype="multipart/form-data" method="post" action="/Landlord/CreateToDatabase/">
+    <div class="form-horizontal">
+        <h4>Add Advertisement</h4>
+        <hr />
+        <label>Title</label>
+        <div class="form-group" style="width:90%;margin:0 auto;">
+            <div class="col-md-10">
+                <input type="text" name="title" />
+            </div>
+        </div>
+        <label>Description</label>
+            <div class="form-group" style="width:90%;margin:0 auto;">
+                    <div class="col-md-10">
+                        <textarea oninput="check();" name="description" id="textInput" placeholder="please input your description" rows="3" style="width:90%;height:100px;"></textarea>
+                        <div class="col-md-10">
+                            <span id="remainChar">0</span>/200
+                    </div>
+                </div>
+            </div>
+        <label>Address</label>
+        <div class="form-group" style="width:90%;margin:0 auto;">
+            <div class="col-md-10">
+                <input type="text" name="address" />
+            </div>
+        </div>
+
+        <label>Upload Images</label>
+        <div class="form-group">
+            <div style="margin-left:30px;">
+                <a href="javascript:addAttachment(event);">Add Image</a>
+            </div>
+            <div id="fileDiv"></div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+
+
+
