@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using OrangeHouse.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +27,14 @@ namespace OrangeHouse.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult ss() {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+
+            var roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(context));
+
+             return View();
         }
     }
 }

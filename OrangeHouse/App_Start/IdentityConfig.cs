@@ -14,6 +14,18 @@ using OrangeHouse.Models;
 
 namespace OrangeHouse
 {
+
+
+        //配置此应用程序中使用的应用程序角色管理器。RoleManager 在 ASP.NET Identity 中定义，并由此应用程序使用。
+        public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+    }
+
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)

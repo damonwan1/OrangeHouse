@@ -70,6 +70,10 @@ namespace OrangeHouse.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name ="Role")]
+        public string RoleType { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "密码")]

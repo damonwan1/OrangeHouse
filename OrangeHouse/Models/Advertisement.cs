@@ -15,7 +15,7 @@ namespace OrangeHouse.Models
         public int Pass { get; set; }
         public string address { get; set; }
         public string RefuseReason { get; set; }
-        public int UserID { get; set; }
+        //public int UserID { get; set; }
 
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Image> Images { get; set; }

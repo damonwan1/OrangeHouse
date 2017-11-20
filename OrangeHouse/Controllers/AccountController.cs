@@ -79,6 +79,19 @@ namespace OrangeHouse.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    ApplicationUser user=await UserManager.FindAsync(model.Email,model.Password);
+                    HttpContext.Session.Add("ID", user.Id);
+                    if (user.RoleType.Equals("Student"))
+                    {
+                        return RedirectToAction("Index", "Student");
+                    }
+                    else if (user.RoleType.Equals("Landlord"))
+                    {
+                        return RedirectToAction("Index", "Landlord");
+                    }
+                    else {
+                        return RedirectToAction("Index", "Staff");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -151,7 +164,7 @@ namespace OrangeHouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, RoleType=model.RoleType };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
