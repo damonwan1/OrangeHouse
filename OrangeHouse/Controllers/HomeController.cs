@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using OrangeHouse.Models;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,22 @@ namespace OrangeHouse.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+
+        public HomeController(ApplicationDbContext applicationDbContext) {
+            db = applicationDbContext;
+        }
 
         public ActionResult Index()
         {
-
-            if (HttpContext.Session["ID"] != null && !HttpContext.Session["ID"].ToString().Equals(""))
+            if (Request.IsAuthenticated)
             {
-                ApplicationUser user = db.Users.Find(HttpContext.Session["ID"]);
+                ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+                if (HttpContext.Session["ID"] == null || HttpContext.Session["ID"].ToString().Equals(""))
+                {
+                    HttpContext.Session.Add("ID", user.Id);
+                }
+
 
                 if (user.RoleType.Equals("Student"))
                 {

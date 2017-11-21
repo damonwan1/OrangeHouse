@@ -2,30 +2,47 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    window.onload = function () {
+        $("#myCarousel").carousel('cycle');
+
+    }
+</script>
+<body>
+
+    <div id="myCarousel" class="carousel slide" style="margin-top:5%;margin-left:12%;width:75%;">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511831948&di=63cef0279ae7b50f2e5095534d39dada&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F16%2F77%2F97%2F92u58PICxJv_1024.JPG" alt="First slide">
+            </div>
+            <div class="item">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511236807401&di=c126fe6dfc6f2f943f407124d032cfe4&imgtype=0&src=http%3A%2F%2Fpic15.photophoto.cn%2F20100428%2F0016028078685465_b.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511831564&di=acf4585ef0ab1ada605afe93248d0ba7&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.taopic.com%2Fuploads%2Fallimg%2F130530%2F240421-1305300F52728.jpg" alt="Third slide">
+            </div>
+            <div class="item">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511238160510&di=83bda4479fb03811749969f07ea510cd&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9d82d158ccbf6c815bfadccdb63eb13532fa40c2.jpg" alt="4 slide">
+            </div>
+            <div class="item">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1511238097293&di=a3748ae559df42ecfb46521da63e214c&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F91529822720e0cf3aca0c0df0046f21fbe09aabb.jpg" alt="5 slide">
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#myCarousel"
+           data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel"
+           data-slide="next">&rsaquo;</a>
+    </div> 
+
+</body>

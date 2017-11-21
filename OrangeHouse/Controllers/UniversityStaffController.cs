@@ -10,13 +10,19 @@ using System.Web;
 using System.Web.Mvc;
 
 
-namespace HouseSystem.Controllers
+namespace OrangeHouse.Controllers
 {
     public class UniversityStaffController : Controller
     {
 
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private AdvertisementDAO advertisementDAO = new AdvertisementDAO();
+        private AdvertisementDAO advertisementDAO;
+        private ApplicationDbContext db;
+
+        public UniversityStaffController(ApplicationDbContext applicationDbContext, AdvertisementDAO advDAO)
+        {
+            db = applicationDbContext;
+            advertisementDAO = advDAO;
+        }
 
         // show the advertisements which are unprocessed
         public ActionResult Index()

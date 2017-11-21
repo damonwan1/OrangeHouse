@@ -10,13 +10,21 @@ using System.Collections;
 using OrangeHouse.Models;
 using OrangeHouse.DAO;
 
-namespace HouseSystem.Controllers
+namespace OrangeHouse.Controllers
 {
     public class LandlordController : Controller
     {
-        private LandlordDAO landlordDAO = new LandlordDAO();
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private AdvertisementDAO advertisementDAO = new AdvertisementDAO();
+     //   public Advertisement advertisement { get; set; }
+        private AdvertisementDAO advertisementDAO;
+        private ApplicationDbContext db;
+        private Advertisement advertisement;
+
+        public LandlordController(ApplicationDbContext applicationDbContext,Advertisement adv,AdvertisementDAO advDAO)
+        {
+            db = applicationDbContext;
+            advertisement=adv;
+            advertisementDAO = advDAO;
+        }
 
         // GET: Landlord
         public ActionResult Index()
@@ -63,7 +71,7 @@ namespace HouseSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Advertisement advertisement = db.Advertisements.Find(id);
+            advertisement = db.Advertisements.Find(id);
             if (advertisement == null)
             {
                 return HttpNotFound();
@@ -85,7 +93,6 @@ namespace HouseSystem.Controllers
                     //????must set both of two????
                     ApplicationUser landlord = db.Users.Find(HttpContext.Session["ID"]);
                 //NULL?????
-                    Advertisement advertisement = new Advertisement();
                 advertisement.Description=description;
                 advertisement.Title = title;
                 advertisement.address = address;
@@ -154,7 +161,7 @@ namespace HouseSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Advertisement advertisement = db.Advertisements.Find(id);
+            advertisement = db.Advertisements.Find(id);
             if (advertisement == null)
             {
                 return HttpNotFound();
@@ -198,7 +205,7 @@ namespace HouseSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Advertisement advertisement = db.Advertisements.Find(id);
+            advertisement = db.Advertisements.Find(id);
             if (advertisement == null)
             {
                 return HttpNotFound();
@@ -211,7 +218,7 @@ namespace HouseSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Advertisement advertisement = db.Advertisements.Find(id);
+            advertisement = db.Advertisements.Find(id);
             db.Advertisements.Remove(advertisement);
             db.SaveChanges();
             ViewBag.message = "Delete successfully!";

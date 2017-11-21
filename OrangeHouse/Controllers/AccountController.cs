@@ -1,14 +1,11 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OrangeHouse.Models;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace OrangeHouse.Controllers
 {
@@ -404,7 +401,16 @@ namespace OrangeHouse.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            if (HttpContext.Session["ID"] != null && !HttpContext.Session["ID"].ToString().Equals(""))
+            {
+                HttpContext.Session.Clear();
+                TempData["Message"] = "logout successfully!";
+            }
+            else
+            {
+                TempData["Message"] = "please login in again!";
+            }
+            return RedirectToAction("index", "Home");
         }
 
         //

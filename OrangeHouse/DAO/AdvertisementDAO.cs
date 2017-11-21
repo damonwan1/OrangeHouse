@@ -8,7 +8,10 @@ namespace OrangeHouse.DAO
 {
     public class AdvertisementDAO
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        public AdvertisementDAO(ApplicationDbContext applicationDbContext) {
+            db = applicationDbContext;
+        }
 
         public List<Advertisement> GetAdvsPass()
             {
