@@ -1,32 +1,32 @@
 ﻿@model OrangeHouse.Models.IndexViewModel
 @{
-    ViewBag.Title = "管理";
+    ViewBag.Title = "Manage";
 }
 
 <h2>@ViewBag.Title。</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>更改你的帐户设置</h4>
+    <h4>Manage your account setting</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>密码:</dt>
+        <dt>Password:</dt>
         <dd>
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("更改密码", "ChangePassword")
+                @Html.ActionLink("Change Password", "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("创建", "SetPassword")
+                @Html.ActionLink("Create", "SetPassword")
             }
             ]
         </dd>
-        <dt>外部登录名:</dt>
+        <dt>External Username:</dt>
         <dd>
             @Model.Logins.Count [
-            @Html.ActionLink("管理", "ManageLogins") ]
+            @Html.ActionLink("Manage", "ManageLogins") ]
         </dd>
         @*
             电话号码可以用作双因素身份验证系统中的第二个验证因素。
@@ -56,11 +56,10 @@
                 }
             </dd>
         *@
-        <dt>双因素身份验证:</dt>
+        <dt>Double identity verify:</dt>
         <dd>
             <p>
-                未配置任何双因素身份验证提供程序。若要了解如何设置此 ASP.NET 应用程序以支持
-                双因素身份验证的详细信息，请参阅<a href="https://go.microsoft.com/fwlink/?LinkId=403804">此文章</a>。
+                No double identity verify program has been setted.
             </p>
             @*@if (Model.TwoFactor)
                 {

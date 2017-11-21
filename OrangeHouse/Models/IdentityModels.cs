@@ -37,7 +37,7 @@ namespace OrangeHouse.Models
             base.Name = roleName;
         }
 
-        [Display(Name = "角色描述")]
+        [Display(Name = "Description of Role")]
         public string Description { get; set; }
         /// <summary>
         /// 权限列表
